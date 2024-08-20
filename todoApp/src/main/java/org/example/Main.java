@@ -29,6 +29,9 @@ public class Main {
                     methods.updateTask();
                     break;
             }
+            if ( input.toLowerCase() == "done"){
+//                "close connection and  then break "
+            }
         }
     }
 }
