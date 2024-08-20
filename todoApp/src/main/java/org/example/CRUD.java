@@ -4,9 +4,8 @@ import java.sql.*;
 
 public class CRUD {
     private static final String  URL = "jdbc:sqlite:mydatabase.db";
-    String input ;
 
-    public void addTask(Connection connection){
+    public void addTask(Connection connection , String input){
         String sql = "INSERT INTO tasks ('NewTasks') VALUES (?)";
         try (PreparedStatement preparedState =  connection.prepareStatement(sql)){
             preparedState.setString(1 , input);
@@ -17,8 +16,8 @@ public class CRUD {
         }
     }
 
-    public void removeTask(Connection connection){
-        String sql = "DELETE FROM tasks ('New tasks') VALUES (?)";
+    public void removeTask(Connection connection , String input){
+        String sql = "DELETE FROM tasks WHERE ('NewTasks') = (?)";
         try(PreparedStatement preparedState = connection.prepareStatement(sql)) {
             preparedState.setString(1,input);
             preparedState.execute();

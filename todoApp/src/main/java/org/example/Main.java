@@ -21,10 +21,16 @@ public class Main {
 
             switch (input) {
                 case "1":
-                    methods.addTask(connect);
+                    System.out.print("add task: ");
+                    input = scanner.nextLine();
+                    methods.addTask(connect , input);
+                    System.out.println("TASK ADDED!");
                     break;
                 case "2":
-                    methods.removeTask(connect);
+                    System.out.print("delete task: ");
+                    input = scanner.nextLine();
+                    methods.removeTask(connect , input);
+                    System.out.println("TASK DELETED!");
                     break;
                 case "3":
                     connect.close();
