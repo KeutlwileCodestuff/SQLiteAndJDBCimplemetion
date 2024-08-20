@@ -1,37 +1,36 @@
 package org.example;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
+import java.sql.*;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         Scanner scanner = new Scanner(System.in);
         CRUD methods = new CRUD();
+        DataBaseManager manager = new DataBaseManager();
+
         String input;
         while(true){
+            Connection connect = manager.connect();
+
             System.out.println("What would you like to do ? \n" +
                     "1.Add task \n" +
                     "2.Remove task \n" +
-                    "3.Update task");
+                    "3.Done" );
+
             input = scanner.nextLine();
+
             switch (input) {
                 case "1":
-                    methods.addTask();
+                    methods.addTask(connect);
                     break;
                 case "2":
-                    methods.removeTask();
+                    methods.removeTask(connect);
                     break;
                 case "3":
-                    methods.updateTask();
+                    connect.close();
                     break;
             }
-            if ( input.toLowerCase() == "done"){
-//                "close connection and  then break "
-            }
+
         }
     }
 }

@@ -7,7 +7,7 @@ public class CRUD {
     String input ;
 
     public void addTask(Connection connection){
-        String sql = "INSERT INTO (New tasks) VALUES (?)";
+        String sql = "INSERT INTO tasks ('NewTasks') VALUES (?)";
         try (PreparedStatement preparedState =  connection.prepareStatement(sql)){
             preparedState.setString(1 , input);
             preparedState.execute();
@@ -18,7 +18,7 @@ public class CRUD {
     }
 
     public void removeTask(Connection connection){
-        String sql = "DELETE FROM (New tasks) VALUES (?)";
+        String sql = "DELETE FROM tasks ('New tasks') VALUES (?)";
         try(PreparedStatement preparedState = connection.prepareStatement(sql)) {
             preparedState.setString(1,input);
             preparedState.execute();
@@ -28,7 +28,12 @@ public class CRUD {
         }
     }
 
-    public void updateTask(){
-
-    }
+//    public void updateTask(Connection connection){
+//        String sql = "UPDATE (mydatabase) SET (New tasks) = (?) WHERE id  = (?)";
+//        try(PreparedStatement preparedState = connection.prepareStatement(sql) ) {
+//
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 }
